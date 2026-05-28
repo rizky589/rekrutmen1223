@@ -24,7 +24,7 @@ export function LoginPasswordInput() {
         aria-label={isVisible ? "Sembunyikan password" : "Lihat password"}
         aria-pressed={isVisible}
         onClick={() => setIsVisible((value) => !value)}
-        className="absolute right-3 top-1/2 grid h-8 w-8 -translate-y-1/2 place-items-center rounded-md text-cyan-300 transition hover:bg-cyan-300/10 hover:text-emerald-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/50"
+        className="absolute right-1 top-1/2 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-md text-cyan-300 transition hover:bg-cyan-300/10 hover:text-emerald-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/50"
       >
         {isVisible ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
       </button>

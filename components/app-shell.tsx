@@ -26,8 +26,8 @@ export function AppShell({ children, profile }: { children: React.ReactNode; pro
 
   return (
     <div className="min-h-dvh bg-background">
-      <header className="sticky top-0 z-40 border-b bg-background/85 backdrop-blur">
-        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-3 px-4">
+      <header className="sticky top-0 z-40 border-b bg-background/85 pt-[var(--safe-top)] backdrop-blur">
+        <div className="app-container responsive-wrap flex h-16 items-center justify-between gap-3 px-4 sm:px-5 md:px-6 lg:px-8 xl:px-10 2xl:max-w-[88rem] 2xl:px-12">
           <Logo />
           <div className="flex items-center gap-2">
             <ThemeToggle />
@@ -43,7 +43,7 @@ export function AppShell({ children, profile }: { children: React.ReactNode; pro
           </div>
         </div>
       </header>
-      <div className="mx-auto grid max-w-7xl gap-0 px-4 md:grid-cols-[240px_1fr] md:gap-6">
+      <div className="app-container app-shell-layout px-4 sm:px-5 md:grid-cols-[240px_minmax(0,1fr)] md:gap-6 md:px-6 lg:gap-8 lg:px-8 xl:gap-10 xl:px-10 2xl:max-w-[88rem] 2xl:gap-12 2xl:px-12">
         <aside className="hidden border-r py-6 md:block">
           <div className="mb-5 flex items-center gap-3 pr-5">
             <span className="grid h-10 w-10 place-items-center rounded-full bg-secondary text-sm font-semibold">{initials(profile.full_name)}</span>
@@ -57,7 +57,7 @@ export function AppShell({ children, profile }: { children: React.ReactNode; pro
               <Link
                 key={item.href}
                 href={item.href}
-                className="flex items-center gap-3 rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors duration-200 hover:bg-muted hover:text-orange-500"
+                className="flex min-h-11 items-center gap-3 rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors duration-200 hover:bg-muted hover:text-orange-500"
               >
                 <item.icon className="h-4 w-4" />
                 {item.label}
@@ -65,14 +65,14 @@ export function AppShell({ children, profile }: { children: React.ReactNode; pro
             ))}
           </nav>
         </aside>
-        <main className="min-w-0 py-5 md:py-8">{children}</main>
+        <main className="min-w-0 pb-[calc(var(--mobile-nav-height)_+_1rem)] pt-5 sm:pt-6 md:py-8 lg:py-9 xl:py-10 2xl:py-12">{children}</main>
       </div>
-      <nav className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-5 border-t bg-background/95 px-2 pb-[max(env(safe-area-inset-bottom),0.35rem)] pt-2 backdrop-blur md:hidden">
+      <nav className="fixed inset-x-0 bottom-0 z-40 grid min-h-[var(--mobile-nav-height)] grid-cols-5 border-t bg-background/95 px-2 pb-[max(var(--safe-bottom),0.5rem)] pt-2 backdrop-blur md:hidden">
         {nav.slice(0, 5).map((item) => (
           <Link
             key={item.href}
             href={item.href}
-            className="flex flex-col items-center gap-1 rounded-md px-2 py-1.5 text-[11px] text-muted-foreground transition-colors duration-200 hover:text-orange-500"
+            className="flex min-h-11 flex-col items-center justify-center gap-1 rounded-md px-2 py-1.5 text-[11px] text-muted-foreground transition-colors duration-200 hover:text-orange-500"
           >
             <item.icon className="h-4 w-4" />
             <span className="max-w-full truncate">{item.label}</span>

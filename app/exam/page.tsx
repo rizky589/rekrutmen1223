@@ -26,19 +26,19 @@ export default async function ExamPage() {
 
   return (
     <AppShell profile={profile}>
-      <div className="flex h-[calc(100dvh-7rem)] min-h-0 flex-col gap-4 overflow-hidden md:h-[calc(100dvh-8rem)]">
+      <div className="flex h-[calc(100dvh_-_7rem_-_var(--safe-top)_-_var(--mobile-nav-height))] min-h-[calc(100dvh_-_9rem_-_var(--mobile-nav-height))] flex-col gap-4 overflow-hidden md:h-[calc(100dvh_-_8rem)]">
         <div className="shrink-0 rounded-lg border bg-background/95 p-4 pr-4 shadow-sm backdrop-blur sm:pr-[22rem]">
           <h1 className="text-2xl font-semibold">Tes Kompetensi</h1>
           <p className="mt-1 max-w-2xl text-sm text-muted-foreground">Jawab semua soal. Nilai tidak ditampilkan setelah submit.</p>
         </div>
 
-        <div className="fixed right-3 top-20 z-50 max-w-[calc(100vw-1.5rem)] rounded-lg border bg-background/95 p-2 shadow-lg backdrop-blur md:right-6">
+        <div className="fixed right-3 top-[calc(5rem_+_var(--safe-top))] z-50 max-w-[calc(100vw_-_1.5rem)] rounded-lg border bg-background/95 p-2 shadow-lg backdrop-blur md:right-6">
           <div className="origin-top-right scale-[0.92] sm:scale-100">
             <ExamTimer startedAt={attempt.started_at} />
           </div>
         </div>
 
-        <form action={submitExam} className="min-h-0 flex-1 space-y-4 overflow-y-auto overscroll-contain rounded-lg pr-1 pb-24 md:pb-6">
+        <form action={submitExam} className="min-h-0 flex-1 space-y-4 overflow-y-auto overscroll-contain rounded-lg pb-[calc(var(--mobile-nav-height)_+_1rem)] pr-1 md:pb-6">
           <input type="hidden" name="attemptId" value={attemptId} />
           {(questions as Question[]).map((question) => (
             <Card key={question.id}>
@@ -53,8 +53,8 @@ export default async function ExamPage() {
                     const displayKey = ANSWER_KEYS[optionIndex];
                     const text = question[optionKey];
                     return (
-                      <label key={key} className="flex items-start gap-3 rounded-md border p-3 text-sm hover:bg-muted">
-                        <input className="mt-1" type="radio" name={`q_${question.id}`} value={key} required />
+                      <label key={key} className="flex min-h-11 items-start gap-3 rounded-md border p-3 text-sm hover:bg-muted">
+                        <input className="mt-0.5 h-5 w-5 shrink-0" type="radio" name={`q_${question.id}`} value={key} required />
                         <span><b>{displayKey}.</b> {text}</span>
                       </label>
                     );

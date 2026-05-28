@@ -39,7 +39,7 @@ export function ExamSubmitButton({ questionIds }: { questionIds: Array<{ id: str
             <p className="mt-3 text-sm leading-6 text-muted-foreground">
               Setelah submit, Anda tidak dapat mengubah jawaban kembali.
             </p>
-            <div className="mt-6 grid grid-cols-2 gap-3">
+            <div className="responsive-two-grid mt-6 gap-3">
               <Button
                 type="button"
                 disabled={submitting}

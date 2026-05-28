@@ -72,30 +72,30 @@ export function LandingPage() {
 
   return (
     <main className="min-h-dvh overflow-hidden bg-[#fff8f1] text-slate-950">
-      <header className={`fixed inset-x-0 top-0 z-40 transition-all duration-300 ${scrolled ? "bg-white/82 shadow-sm backdrop-blur-md" : "bg-transparent"}`}>
-        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 md:px-5">
-          <Link href="/" className="flex items-center gap 0">
-            <Image src="/bps.png" alt="Logo BPS" width={60} height={60} className="h-13 w-13 object-contain" priority />
-            <span className="hidden text-sm font-semibold italic sm:block">Badan Pusat Statistik Kabupaten Labuhanbatu Utara</span>
+      <header className={`fixed inset-x-0 top-0 z-40 pt-[var(--safe-top)] transition-all duration-300 ${scrolled ? "bg-white/82 shadow-sm backdrop-blur-md" : "bg-transparent"}`}>
+        <div className="app-container flex min-h-16 items-center justify-between gap-2 px-4 py-2 sm:gap-3 sm:px-5 sm:py-0 md:px-6 lg:px-8 xl:px-10 2xl:max-w-[88rem] 2xl:px-12">
+          <Link href="/" className="flex min-h-11 min-w-0 flex-1 items-center gap-0">
+            <Image src="/bps.png" alt="Logo BPS" width={64} height={64} className="h-15 w-15 shrink-0 object-contain -mr-1 sm:h-14 sm:w-14" />
+            <span className="-ml-1 min-w-0 text-[12px] font-semibold italic leading-3 sm:text-sm sm:leading-4">Badan Pusat Statistik <br />Kabupaten Labuhanbatu Utara</span>
           </Link>
           <nav className="hidden items-center gap-20 text-xs font-semibold text-slate-700 md:flex">
             <Link href="/" className="text-orange-600"></Link>
             {navItems.map((nav) => <Link key={nav.href} href={nav.href}>{nav.label}</Link>)}
           </nav>
-          <Button asChild size="sm" className="bg-orange-600 text-white hover:bg-orange-700">
-            <Link href="/login"><LogIn className="h-4 w-4" /> Masuk / Daftar</Link>
+          <Button asChild size="sm" className="min-h-10 shrink-0 px-3 text-sm bg-orange-600 text-white hover:bg-orange-700 sm:min-h-11 sm:px-4">
+            <Link href="/login"><LogIn className="h-4 w-4" /> <span>Masuk</span><span className="hidden sm:inline"> / Daftar</span></Link>
           </Button>
         </div>
       </header>
 
-      <section className="relative min-h-dvh px-4 pb-16 pt-24 md:pt-28">
+      <section className="relative min-h-dvh px-4 pb-[calc(4rem_+_var(--safe-bottom))] pt-[calc(6rem_+_var(--safe-top))] sm:px-5 sm:pt-[calc(7.5rem_+_var(--safe-top))] md:px-6 md:pt-[calc(7rem_+_var(--safe-top))] lg:px-8 xl:px-10 2xl:px-12">
         <div className="absolute inset-0 bg-[linear-gradient(110deg,#fffaf4_0%,#fff4e5_42%,#fed7aa_100%)]" />
         <div className="absolute right-0 top-0 h-[70dvh] w-[62vw] rounded-bl-[8rem] bg-orange-200/50" />
         <div ref={accentRef} className="absolute bottom-20 right-8 h-32 w-32 rounded-full border border-orange-300/50 opacity-60" />
 
-        <div className="relative mx-auto grid min-h-[calc(100dvh-10rem)] max-w-7xl items-center gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+        <div className="app-container landing-hero-grid relative min-h-[calc(100dvh_-_10rem)] items-start gap-8 sm:gap-8 md:gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start xl:gap-12 2xl:max-w-[88rem] 2xl:gap-14">
           <motion.div variants={container} initial="hidden" animate="show" className="max-w-2xl">
-            <motion.h1 variants={item} className="text-4xl font-extrabold leading-tight tracking-normal text-slate-950 sm:text-5xl lg:text-6xl">
+            <motion.h1 variants={item} className="responsive-headline font-extrabold leading-tight tracking-normal text-slate-950">
               Rekrutmen <span className="block text-orange-600">Mitra Statistik Tambahan 2026</span>
             </motion.h1>
             <motion.p variants={item} className="mt-5 max-w-xl text-sm leading-7 text-slate-600 sm:text-base">
@@ -118,21 +118,23 @@ export function LandingPage() {
                 <button
                   key={entry.src}
                   type="button"
-                  className={`h-1.5 rounded-full transition-all ${active === index ? "w-9 bg-orange-600" : "w-5 bg-orange-200"}`}
+                  className="grid min-h-11 min-w-11 place-items-center rounded-full"
                   aria-label={`Slide ${index + 1}`}
                   onClick={() => setActive(index)}
-                />
+                >
+                  <span className={`h-1.5 rounded-full transition-all ${active === index ? "w-9 bg-orange-600" : "w-5 bg-orange-200"}`} />
+                </button>
               ))}
-              <button type="button" className="ml-4 grid h-8 w-8 place-items-center rounded-full bg-white text-orange-600 shadow-sm" onClick={() => setActive((active + slides.length - 1) % slides.length)} aria-label="Slide sebelumnya">
+              <button type="button" className="ml-1 grid h-11 w-11 place-items-center rounded-full bg-white text-orange-600 shadow-sm" onClick={() => setActive((active + slides.length - 1) % slides.length)} aria-label="Slide sebelumnya">
                 <ChevronLeft className="h-4 w-4" />
               </button>
-              <button type="button" className="grid h-8 w-8 place-items-center rounded-full bg-orange-600 text-white shadow-sm" onClick={() => setActive((active + 1) % slides.length)} aria-label="Slide berikutnya">
+              <button type="button" className="grid h-11 w-11 place-items-center rounded-full bg-orange-600 text-white shadow-sm" onClick={() => setActive((active + 1) % slides.length)} aria-label="Slide berikutnya">
                 <ChevronRight className="h-4 w-4" />
               </button>
             </motion.div>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0, scale: 0.98, x: 24 }} animate={{ opacity: 1, scale: 1, x: 0 }} transition={{ duration: 0.7, ease: "easeOut" }} className="relative aspect-[16/10] w-full">
+          <motion.div initial={{ opacity: 0, scale: 0.98, x: 24 }} animate={{ opacity: 1, scale: 1, x: 0 }} transition={{ duration: 0.7, ease: "easeOut" }} className="relative aspect-[16/10] w-full lg:-mt-1 xl:-mt-2">
             <div className="absolute inset-0 overflow-hidden rounded-[2rem] bg-gradient-to-br from-orange-50 via-white to-orange-100">
               <Image
                 key={slide.src}
@@ -151,14 +153,14 @@ export function LandingPage() {
       </section>
 
       <section id="tentang" className="bg-white px-4 py-16">
-        <div className="mx-auto max-w-7xl">
+        <div className="app-container">
           <motion.div initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mx-auto mb-12 max-w-2xl text-center">
             <h2 className="text-3xl font-extrabold tracking-normal text-slate-950">Apa itu Mitra Statistik BPS?</h2>
             <p className="mt-4 text-sm leading-7 text-slate-600 sm:text-base">
               Mitra Statistik adalah individu yang membantu BPS dalam pelaksanaan kegiatan sensus dan survei statistik nasional, termasuk Sensus Ekonomi 2026.
             </p>
           </motion.div>
-          <div className="grid gap-8 md:grid-cols-3">
+          <div className="landing-feature-grid gap-6 sm:grid-cols-2 sm:gap-7 md:grid-cols-2 md:gap-8 lg:grid-cols-3 xl:grid-cols-3 xl:gap-9 2xl:grid-cols-3 2xl:gap-10">
             {[
               { icon: UsersRound, title: "Terbuka untuk Umum", text: "Siapa saja yang memenuhi syarat dan bukan ASN dapat mendaftar sebagai Calon Mitra Statistik BPS untuk membantu pelaksanaan Sensus Ekonomi 2026." },
               { icon: ShieldCheck, title: "Proses Seleksi Transparan", text: "Seluruh tahapan rekrutmen dilakukan secara terbuka melalui aplikasi Sobat, dengan kriteria seleksi yang jelas." },

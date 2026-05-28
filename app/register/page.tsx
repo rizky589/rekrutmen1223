@@ -10,7 +10,7 @@ import { DISTRICTS } from "@/lib/constants";
 
 export default function RegisterPage() {
   return (
-    <main className="relative grid min-h-dvh place-items-center overflow-hidden bg-[#070b22] px-4 py-8">
+    <main className="relative grid min-h-dvh place-items-center overflow-hidden bg-[#070b22] px-4 pb-[calc(2rem_+_var(--safe-bottom))] pt-[calc(2rem_+_var(--safe-top))]">
       <div className="login-cyber-grid" />
       <div className="login-morph-shape left-[6%] top-[12%] h-36 w-36 opacity-50" />
       <div className="login-morph-shape right-[8%] top-[18%] h-56 w-56 opacity-40 [animation-delay:1.4s]" />

@@ -39,7 +39,7 @@ export function QuestionManager({ questions }: { questions: Question[] }) {
                 </Select>
               </div>
               <Field name="category" label="Kategori" defaultValue={editing?.category ?? ""} />
-              <div className="grid grid-cols-2 gap-2">
+              <div className="responsive-two-grid gap-2">
                 <Button className="w-full">{editing ? "Update Soal" : "Simpan Soal"}</Button>
                 <Button type="button" variant="outline" onClick={() => setEditing(null)}>Reset</Button>
               </div>

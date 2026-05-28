@@ -1,6 +1,5 @@
 import { Suspense } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { ArrowRight, UserRound } from "lucide-react";
 import { signIn } from "@/app/actions";
 import { ActionForm } from "@/components/action-form";
@@ -11,13 +10,13 @@ import { Label } from "@/components/ui/label";
 
 export default function LoginPage({ searchParams }: { searchParams: Promise<{ next?: string }> }) {
   return (
-    <main className="relative min-h-dvh overflow-hidden bg-[#070b22] px-4 py-6 text-cyan-50">
+    <main className="relative min-h-dvh overflow-hidden bg-[#070b22] px-4 pb-[calc(2.5rem_+_var(--safe-bottom))] pt-[calc(1.5rem_+_var(--safe-top))] text-cyan-50 sm:px-5 md:px-6 lg:px-8 xl:px-10 2xl:px-12">
       <div className="login-cyber-grid" />
       <div className="login-morph-shape left-[6%] top-[12%] h-36 w-36 opacity-50" />
       <div className="login-morph-shape right-[8%] top-[18%] h-56 w-56 opacity-40 [animation-delay:1.4s]" />
       <div className="login-morph-shape bottom-[8%] left-[18%] h-44 w-44 opacity-30 [animation-delay:2.8s]" />
 
-      <section className="relative z-10 mx-auto grid min-h-[calc(100dvh-3rem)] w-full max-w-6xl items-center gap-8 lg:grid-cols-[1fr_460px]">
+      <section className="app-container login-layout relative z-10 min-h-[calc(100dvh_-_3rem_-_var(--safe-top)_-_var(--safe-bottom))] items-center gap-8 sm:gap-8 md:gap-9 lg:grid-cols-[minmax(0,1fr)_minmax(22rem,460px)] lg:gap-10 xl:gap-12 2xl:max-w-[88rem] 2xl:gap-14">
         <div className="hidden max-w-xl lg:block">
           <div className="mb-8 flex items-center gap-3">
             
@@ -29,7 +28,7 @@ export default function LoginPage({ searchParams }: { searchParams: Promise<{ ne
           </div>
 
          
-          <h1 className="text-5xl font-black uppercase leading-tight tracking-[0.06em] text-white drop-shadow-[0_0_24px_rgba(34,211,238,0.28)]">
+          <h1 className="responsive-headline font-black uppercase leading-tight tracking-[0.06em] text-white drop-shadow-[0_0_24px_rgba(34,211,238,0.28)]">
             Portal Akses Ujian Online
           </h1>
           <p className="mt-5 max-w-lg text-base leading-8 text-cyan-100/70">
@@ -37,7 +36,7 @@ export default function LoginPage({ searchParams }: { searchParams: Promise<{ ne
             soal, hasil ujian, dan pengaturan seleksi.
           </p>
 
-          <div className="mt-8 grid max-w-lg grid-cols-2 gap-3 text-sm text-cyan-100/80">
+          <div className="responsive-two-grid mt-8 max-w-lg gap-3 text-sm text-cyan-100/80 sm:grid-cols-2 md:gap-4 lg:grid-cols-2 xl:gap-5 2xl:gap-6">
             <div className="rounded-xl border border-cyan-300/20 bg-cyan-300/5 p-4 backdrop-blur transition-all duration-300 ease-out hover:-translate-y-1 hover:border-orange-400 hover:bg-cyan-300/10 hover:shadow-[0_0_0_1px_rgba(251,146,60,0.8),0_0_24px_rgba(249,115,22,0.38),0_22px_55px_-32px_rgba(249,115,22,0.75)]">
               <p className="font-semibold text-white">60 Menit</p>
               <p className="mt-1 text-xs leading-5 text-cyan-100/60">Timer otomatis waktu ujian dimulai.</p>
@@ -55,14 +54,6 @@ export default function LoginPage({ searchParams }: { searchParams: Promise<{ ne
         </div>
 
         <div className="mx-auto w-full max-w-[460px]">
-          <div className="mb-6 flex items-center justify-center gap-3 lg:hidden">
-            <Image src="/bps.png" alt="BPS" width={34} height={34} className="h-9 w-9 object-contain" priority />
-            <div className="min-w-0">
-              <p className="truncate text-sm font-semibold italic text-white">Badan Pusat Statistik Kabupaten Labuhanbatu Utara</p>
-              <p className="text-xs tracking-[0.18em] text-emerald-300/80">SYSTEM READY</p>
-            </div>
-          </div>
-
           <div className="relative overflow-hidden rounded-[1.35rem] border-2 border-cyan-300/25 bg-[#0a0e27]/80 p-6 shadow-[0_0_60px_rgba(34,211,238,0.22)] backdrop-blur-xl sm:p-9">
             <span className="absolute left-3 top-3 h-5 w-5 border-l-2 border-t-2 border-cyan-300" />
             <span className="absolute right-3 top-3 h-5 w-5 border-r-2 border-t-2 border-cyan-300" />
@@ -89,7 +80,7 @@ export default function LoginPage({ searchParams }: { searchParams: Promise<{ ne
         </div>
       </section>
 
-      <p className="pointer-events-none fixed bottom-3 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap text-[10px] font-semibold uppercase tracking-[0.28em] text-cyan-200/50">
+      <p className="pointer-events-none fixed bottom-[calc(0.75rem_+_var(--safe-bottom))] left-1/2 z-10 -translate-x-1/2 whitespace-nowrap text-[10px] font-semibold uppercase tracking-[0.28em] text-cyan-200/50">
         TIM IPDS 2026
       </p>
     </main>
@@ -126,7 +117,7 @@ async function LoginForm({ searchParams }: { searchParams: Promise<{ next?: stri
         <LoginPasswordInput />
       </div>
 
-      <Button className="login-glow-sweep h-12 w-full overflow-hidden border-2 border-cyan-300 bg-cyan-300/10 font-mono text-sm font-black uppercase tracking-[0.22em] text-cyan-100 shadow-[0_0_24px_rgba(34,211,238,0.22)] hover:bg-cyan-300/20 hover:text-white hover:shadow-[0_0_34px_rgba(34,211,238,0.45)]">
+      <Button className="login-glow-sweep min-h-12 w-full overflow-hidden border-2 border-cyan-300 bg-cyan-300/10 font-mono text-sm font-black uppercase tracking-[0.16em] text-cyan-100 shadow-[0_0_24px_rgba(34,211,238,0.22)] hover:bg-cyan-300/20 hover:text-white hover:shadow-[0_0_34px_rgba(34,211,238,0.45)] sm:tracking-[0.22em]">
         Masuk
         <ArrowRight className="h-4 w-4" />
       </Button>
